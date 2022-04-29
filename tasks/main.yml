@@ -1,0 +1,11 @@
+---
+- name: Drop SSH-PubKeys
+  authorized_key:
+    user: {{ ansible_user_id }}
+    state: present
+    key: '{{ item }}'
+  with_file:
+    - public_keys/alex@github.pub
+    - public_keys/alex@l480-toolbox_ed25519.pub
+    - public_keys/alex@toolbox_ed25519.pub
+    - public_keys/wolf@wolf-desktop_ed25519.pub
